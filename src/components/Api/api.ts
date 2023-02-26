@@ -3,7 +3,9 @@
 const apiLogin = {
     email: 'edimarfilho971@gmail.com',
     senha: '#EDIMARpires17',
-    nome: 'Edimar'
+    nome: 'Edimar',
+    balence: 2000.00,
+    id: '1'
 }
 
 //Promise
