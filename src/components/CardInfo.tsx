@@ -7,11 +7,7 @@ interface ICardInfo{
 
 const CardInfo = ({moinContent, content} : ICardInfo) => {
     return(
-        <div className="colo
-        text-dark
-        "
-        
-        >
+        <div className="colo text-dark">
 
             <div>
                 {moinContent}

@@ -1,9 +1,10 @@
 import { Spinner, Center } from '@chakra-ui/react'
 import { api } from '../Api/api';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CardInfo from '../CardInfo';
 import './Conta.css'
+import { AppContext } from '../AppContext';
 
 
 interface UserData{
@@ -17,7 +18,14 @@ interface UserData{
 const Conta = () => {
 
     const [userData, setUserData] = useState<null | UserData>()
-    
+    const { id } = useParams()
+    const navigate = useNavigate()
+
+    ////ESPORTANDO O CONTEXT GLOBAL
+    const { isLoggedIn } = useContext(AppContext)
+    console.log(isLoggedIn)
+
+    !isLoggedIn && navigate('/')
         /*const login = () => {
           alert(`Bem-vindo(a) ${email}.`)
         }*/
@@ -37,9 +45,8 @@ const Conta = () => {
         /*Pq o mês comessar ser contado do 0, para colocar o mês serto precisamos acresentar mais 1 */
         const currentMonth = actualData.getMonth() + 1;
         //Trabalhando com Parâmetros --- Destruturando
-        const { id } = useParams()
+        
 
-        const navigate = useNavigate()
         if(userData && id !== userData.id) {
             navigate('/')
         }

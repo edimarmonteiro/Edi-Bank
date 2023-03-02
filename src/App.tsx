@@ -1,20 +1,24 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
-import Home from './components/pages/Home';
+import { Heand } from './components/Header/Heand';
 import Conta from './components/pages/Conta';
 import ContaInfo from './components/pages/ContaInfo';
+import { AppContextProvider } from './components/AppContext';
+
 
 function App() {
  
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path='/' element={<Home/>} />
-          <Route path='/conta/:id' element={<Conta/>}/>
-          <Route path='/informação' element={<ContaInfo/>} />
-        </Routes>
-      </Layout>
+      <AppContextProvider>
+        <Layout>
+          <Routes>
+            <Route path='/' element={<Heand/>} />
+            <Route path='/conta/:id' element={<Conta/>}/>
+            <Route path='/informação' element={<ContaInfo/>} />
+          </Routes>
+        </Layout>
+      </AppContextProvider>
     </BrowserRouter>
   );
 }

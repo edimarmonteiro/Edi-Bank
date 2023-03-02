@@ -1,10 +1,10 @@
-import { Heand } from "./Header/Heand";
+import { Carde } from "./Carde";
 import { Footer } from "./Footer";
 
 export const Layout = ({ children }: any) => {
     return(
         <>
-            <Heand/>
+            <Carde/>
                 {children}
             <Footer/>
         </>
