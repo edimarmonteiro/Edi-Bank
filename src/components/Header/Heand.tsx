@@ -13,10 +13,11 @@ export const Heand = () => {
     return(
         <>
         <h1 className="dono">Edi Bank</h1>
-        
+      
+
         <div className='mae_div container mt-5'>
-          <div className='row'>
-            <div className=''>
+        <div className='row'>
+        <div className=''>
           {/*
             //Renderização Condicional
             userData === null || userData === undefined ? 
