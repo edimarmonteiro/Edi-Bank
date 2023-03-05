@@ -1,19 +1,39 @@
 import './Heand.css'
-import { useContext } from 'react'
+import { MouseEventHandler, useContext } from 'react'
 import { AppContext } from '../AppContext'
 import { useState } from 'react';
+import { login } from '../pages/Conta';
+import { useNavigate } from 'react-router-dom';
+import Edi from './Edi';
 
 export const Heand = () => {
     ///////INTERFACE INICIO     
     const [email, setEmail] = useState<string>('')
+    const { setIsLoggedIn } = useContext(AppContext)
+    const navigate = useNavigate()
 
-    const context = useContext(AppContext)
-    console.log(context)
+    const validataUser = async (email: string) => {
+      const loggedIn = await login(email)
+
+      //!Se não estivar igal
+
+      if(!loggedIn){
+        return alert('Email invalido')
+      }
+
+      setIsLoggedIn(true)
+      navigate('/conta/1')
+    }
+
+  //Voltando ao Home
+
 
     return(
         <>
-        <h1 className="dono">Edi Bank</h1>
-      
+        
+         <Edi/>
+          
+        
 
         <div className='mae_div container mt-5'>
         <div className='row'>
@@ -33,7 +53,7 @@ export const Heand = () => {
           placeholder='Password'
           />
 
-          <button className='mt-4 ms-5 ' /*onClick={() => login(email)}*/>
+          <button className='mt-4 ms-5 'onClick={() => validataUser(email)}>
             Entrar
           </button>
         </div>

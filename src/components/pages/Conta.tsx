@@ -1,24 +1,21 @@
 import { Spinner, Center } from '@chakra-ui/react'
 import { api } from '../Api/api';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext  } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CardInfo from '../CardInfo';
 import './Conta.css'
 import { AppContext } from '../AppContext';
+import Edi from '../Header/Edi';
 
 //MECHEDO COM EMAIL altenticação
-export const login = async (email: string): Promise<void> => {
-    const { setIsLoggedIn } = useContext(AppContext)
-    const navigate = useNavigate()
-
+export const login = async (email: string): Promise<boolean> => {
     const data: any = await api
 
     if(email !== data.email) {
-        return alert('Email invalido')
+        return false
     }
 
-    setIsLoggedIn(true)
-    navigate(`/${data.id}`)
+    return true
 }
 //FIM 02/03/2022
 
@@ -66,6 +63,8 @@ const Conta = () => {
             navigate('/')
         }
     return(
+        <>
+        <Edi/>
         <div className='container'>
             <div className='row'>
             <div className=' prim col-4 offset-1 rounded  text-black bg-info-subtle mt-5 pt-2 fw-bold'>
@@ -102,7 +101,9 @@ const Conta = () => {
                 </div>
             
             </div>
+            
         </div>
+        </>
     );
 }
 

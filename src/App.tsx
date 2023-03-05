@@ -1,10 +1,7 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Layout } from './components/Layout';
-import { Heand } from './components/Header/Heand';
-import Conta from './components/pages/Conta';
-import ContaInfo from './components/pages/ContaInfo';
 import { AppContextProvider } from './components/AppContext';
-
+import MainRoutes from './routes';
 
 function App() {
  
@@ -12,11 +9,7 @@ function App() {
     <BrowserRouter>
       <AppContextProvider>
         <Layout>
-          <Routes>
-            <Route path='/' element={<Heand/>} />
-            <Route path='/conta/:id' element={<Conta/>}/>
-            <Route path='/informação' element={<ContaInfo/>} />
-          </Routes>
+          <MainRoutes/>
         </Layout>
       </AppContextProvider>
     </BrowserRouter>
