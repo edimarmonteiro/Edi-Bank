@@ -2,14 +2,19 @@ import { BrowserRouter } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { AppContextProvider } from './components/AppContext';
 import MainRoutes from './routes';
-import { getAllLocalStorage } from './components/storage';
+import { changeLocalStorage, createLocalStolage, getAllLocalStorage } from './services/storage';
 
+
+  
 function App() {
  
-  //Está fazendo desaparecer a interface
-  const localStorage = getAllLocalStorage()
-  console.log(localStorage);
+  createLocalStolage();
+  
+  console.log(getAllLocalStorage())
 
+  changeLocalStorage({
+    login: true
+  })
   return (
     <BrowserRouter>
       <AppContextProvider>
