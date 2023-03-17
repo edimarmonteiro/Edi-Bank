@@ -17,6 +17,6 @@ export const createLocalStolage = (): void => {
     localStorage.setItem('edibank', JSON.stringify(ediBank))
 }
 
-export const changeLocalStorage = (ediBank: IEdiBank) => {
+export const changeLocalStorage = (ediBank: IEdiBank): void => {
     localStorage.setItem('edibank', JSON.stringify(ediBank))
 }

@@ -3,12 +3,15 @@ import { Button, Flex, Box, Center, Text, Spacer } from '@chakra-ui/react'
 import { useContext } from 'react'
 import { AppContext } from '../AppContext'
 import { useNavigate } from 'react-router-dom'
+import { changeLocalStorage } from '../../services/storage'
 const Edi = () => {
     
     const { isLoggedIn, setIsLoggedIn } = useContext(AppContext)
     const navigate = useNavigate()
 
     const logout = () => {
+        //Para quando aperta em (sair) o login sera apagao do localStorage
+        changeLocalStorage({login: false})
         setIsLoggedIn(false)
         navigate('/')
     }

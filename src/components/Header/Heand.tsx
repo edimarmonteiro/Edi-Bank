@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { login } from '../pages/Conta';
 import { useNavigate } from 'react-router-dom';
 import Edi from './Edi';
+import { changeLocalStorage } from '../../services/storage';
 
 export const Heand = () => {
     ///////INTERFACE INICIO     
@@ -22,6 +23,8 @@ export const Heand = () => {
       }
 
       setIsLoggedIn(true)
+      //FAzendo mudança de false para true ao fazer login
+      changeLocalStorage({login: true})
       navigate('/conta/1')
     }
 
